@@ -13,14 +13,14 @@ export class PluginsServer implements IPluginsServer {
 
         if (!plugin) {
             const error: ServiceError = {
-                name: "User Missing",
-                message: `User with ID ${pluginId} does not exist.`,
+                name: "Plugin Missing",
+                message: `Plugin with ID ${pluginId} does not exist.`,
             };
             callback(error, null);
             return;
         }
 
-        console.log(`getUser: returning ${plugin.getMessage()} (id: ${plugin.getId()}).`);
+        console.log(`getMessage: returning ${plugin.getMessage()} (id: ${plugin.getId()}).`);
         callback(null, plugin);
     }
 }
