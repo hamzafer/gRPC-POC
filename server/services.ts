@@ -4,6 +4,7 @@ import {IPluginsServer} from "../proto/plugins_grpc_pb";
 import {Plugin, PluginRequest} from "../proto/plugins_pb";
 
 import {plugins} from "./plugin";
+import {PluginService} from "./Plugin/PluginLoader";
 
 export class PluginsServer implements IPluginsServer {
     getMessage(call: ServerUnaryCall<PluginRequest>, callback: sendUnaryData<Plugin>): void {
@@ -19,6 +20,14 @@ export class PluginsServer implements IPluginsServer {
             callback(error, null);
             return;
         }
+
+        // Temp code to test
+        const pluginService: PluginService = new PluginService();
+        pluginService.loadPlugins().then(() => {
+            console.log("Finished loading Plugins");
+        }).catch(e => {
+            console.error(e);
+        });
 
         console.log(`getMessage: returning ${plugin.getMessage()} (id: ${plugin.getId()}).`);
         callback(null, plugin);

@@ -11,7 +11,8 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
-    "grpc": "^1.24.3"
+    "grpc": "^1.24.3",
+    "PluginService": "git+https://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:x-oauth-basic@github.com/GAPP-Intelligence/PluginService.git"
   },
   "scripts": {
     "build": "sh proto/build.sh",
