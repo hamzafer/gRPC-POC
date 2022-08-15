@@ -8,7 +8,7 @@ import {plugins} from "./plugin";
 export class PluginsServer implements IPluginsServer {
     getMessage(call: ServerUnaryCall<PluginRequest>, callback: sendUnaryData<Plugin>): void {
         const pluginId = call.request.getId();
-        const plugin = plugins.find((u) => u.getId() === pluginId);
+        const plugin = plugins.find((p) => p.getId() === pluginId);
         console.log(`Request with ID ${pluginId} received`);
 
         if (!plugin) {
