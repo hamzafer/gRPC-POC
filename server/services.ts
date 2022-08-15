@@ -1,11 +1,4 @@
-import {
-    ServerUnaryCall,
-    sendUnaryData,
-    ServiceError,
-    ServerWritableStream,
-    ServerReadableStream,
-} from "grpc";
-import {Empty} from "google-protobuf/google/protobuf/empty_pb";
+import {sendUnaryData, ServerUnaryCall, ServiceError,} from "grpc";
 
 import {IPluginsServer} from "../proto/plugins_grpc_pb";
 import {Plugin, PluginRequest} from "../proto/plugins_pb";
