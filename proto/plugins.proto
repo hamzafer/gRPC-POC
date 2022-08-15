@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package plugins;
+
+import "google/protobuf/empty.proto";
+
+enum PluginStatus{
+  UNKNOWN = 0;
+  OFFLINE = 1;
+  BUSY = 2;
+  AVAILABLE = 3;
+}
+
+
+message Plugin {
+  string message = 1;
+  PluginStatus status = 2;
+}
+
+message PluginRequest {
+  int32 id = 1;
+}
+
+service Plugins{
+  rpc GetMessage(PluginRequest) returns (Plugin) {};
+}
