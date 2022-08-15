@@ -11,7 +11,6 @@ enum PluginStatus{
   AVAILABLE = 3;
 }
 
-
 message Plugin {
   string message = 1;
   PluginStatus status = 2;
