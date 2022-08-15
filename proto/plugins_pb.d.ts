@@ -8,6 +8,9 @@ import * as jspb from "google-protobuf";
 import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb";
 
 export class Plugin extends jspb.Message { 
+    getId(): number;
+    setId(value: number): Plugin;
+
     getMessage(): string;
     setMessage(value: string): Plugin;
 
@@ -27,6 +30,7 @@ export class Plugin extends jspb.Message {
 
 export namespace Plugin {
     export type AsObject = {
+        id: number,
         message: string,
         status: PluginStatus,
     }

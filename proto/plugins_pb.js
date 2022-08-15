@@ -94,8 +94,9 @@ proto.plugins.Plugin.prototype.toObject = function(opt_includeInstance) {
  */
 proto.plugins.Plugin.toObject = function(includeInstance, msg) {
   var f, obj = {
-    message: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    status: jspb.Message.getFieldWithDefault(msg, 2, 0)
+    id: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    message: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    status: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -133,10 +134,14 @@ proto.plugins.Plugin.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setId(value);
+      break;
+    case 2:
       var value = /** @type {string} */ (reader.readString());
       msg.setMessage(value);
       break;
-    case 2:
+    case 3:
       var value = /** @type {!proto.plugins.PluginStatus} */ (reader.readEnum());
       msg.setStatus(value);
       break;
@@ -169,17 +174,24 @@ proto.plugins.Plugin.prototype.serializeBinary = function() {
  */
 proto.plugins.Plugin.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
+  f = message.getId();
+  if (f !== 0) {
+    writer.writeInt32(
+      1,
+      f
+    );
+  }
   f = message.getMessage();
   if (f.length > 0) {
     writer.writeString(
-      1,
+      2,
       f
     );
   }
   f = message.getStatus();
   if (f !== 0.0) {
     writer.writeEnum(
-      2,
+      3,
       f
     );
   }
@@ -187,11 +199,29 @@ proto.plugins.Plugin.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional string message = 1;
+ * optional int32 id = 1;
+ * @return {number}
+ */
+proto.plugins.Plugin.prototype.getId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.plugins.Plugin} returns this
+ */
+proto.plugins.Plugin.prototype.setId = function(value) {
+  return jspb.Message.setProto3IntField(this, 1, value);
+};
+
+
+/**
+ * optional string message = 2;
  * @return {string}
  */
 proto.plugins.Plugin.prototype.getMessage = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
@@ -200,16 +230,16 @@ proto.plugins.Plugin.prototype.getMessage = function() {
  * @return {!proto.plugins.Plugin} returns this
  */
 proto.plugins.Plugin.prototype.setMessage = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
 /**
- * optional PluginStatus status = 2;
+ * optional PluginStatus status = 3;
  * @return {!proto.plugins.PluginStatus}
  */
 proto.plugins.Plugin.prototype.getStatus = function() {
-  return /** @type {!proto.plugins.PluginStatus} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+  return /** @type {!proto.plugins.PluginStatus} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
@@ -218,7 +248,7 @@ proto.plugins.Plugin.prototype.getStatus = function() {
  * @return {!proto.plugins.Plugin} returns this
  */
 proto.plugins.Plugin.prototype.setStatus = function(value) {
-  return jspb.Message.setProto3EnumField(this, 2, value);
+  return jspb.Message.setProto3EnumField(this, 3, value);
 };
 
 
