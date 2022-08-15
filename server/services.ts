@@ -9,6 +9,7 @@ export class PluginsServer implements IPluginsServer {
     getMessage(call: ServerUnaryCall<PluginRequest>, callback: sendUnaryData<Plugin>): void {
         const pluginId = call.request.getId();
         const plugin = plugins.find((u) => u.getId() === pluginId);
+        console.log(`Request with ID ${pluginId} received`);
 
         if (!plugin) {
             const error: ServiceError = {
