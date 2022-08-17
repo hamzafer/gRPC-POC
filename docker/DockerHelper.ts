@@ -15,9 +15,9 @@ export class DockerHelper {
             let hostConfig = {
                 NetworkMode: networkName,
                 PortBindings: {
-                    "80/tcp": [
+                    "4000/tcp": [
                         {
-                            "HostPort": "80",
+                            "HostPort": "4000",
                             "HostIp": "0.0.0.0"
                         }
                     ]
@@ -28,7 +28,10 @@ export class DockerHelper {
                 Image: image,
                 Tty: true,
                 name: containerName,
-                HostConfig: hostConfig
+                HostConfig: hostConfig,
+                ExposedPorts: {
+                    "4000/tcp": {}
+                }
             }, function (err: any, container: any) {
                 if (err) {
                     reject(err);
