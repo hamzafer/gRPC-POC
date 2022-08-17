@@ -12,10 +12,13 @@
   },
   "dependencies": {
     "grpc": "^1.24.3",
-    "PluginService": "git+https://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:x-oauth-basic@github.com/GAPP-Intelligence/PluginService.git"
+    "PluginService": "git+https://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:x-oauth-basic@github.com/GAPP-Intelligence/PluginService.git",
+    "dockerode": "^2.3.1",
+    "tar-fs": "^1.15.0"
   },
   "scripts": {
     "build": "sh proto/build.sh",
-    "server": "ts-node server/index.ts"
+    "server": "ts-node server/index.ts",
+    "docker": "ts-node index.ts"
   }
 }
