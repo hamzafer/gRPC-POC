@@ -6,7 +6,7 @@ const server = new Server();
 server.addService(PluginsService, new PluginsServer());
 
 const port = 4000;
-const uri = `localhost:${port}`;
+const uri = `0.0.0.0:${port}`;
 console.log(`Listening on ${uri}`);
 server.bind(uri, ServerCredentials.createInsecure());
 
